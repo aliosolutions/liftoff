@@ -1,0 +1,183 @@
+.navbar {
+	height: 125px;
+}
+
+#main-menu-left li {
+	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 30px;
+}
+
+#main-menu-right {
+	float: right;
+}
+
+#navbar-container {
+	margin-left: 100px;
+}
+
+#navbar-inner {
+	height: 150px;
+}
+
+#login-modal-btn {
+	position: absolute;
+	top: 60px;
+	right: 120px;
+}
+
+#login-submit {
+	width: 206px;
+}
+
+#signup-modal-btn {
+	position: absolute;
+	top: 60px;
+	right: 210px;
+}
+
+#logo {
+	padding-top: 50px;
+}
+
+#suggested {
+	margin-bottom: 100px;
+}
+
+.suggested-link {
+	margin-top: 35px;
+	font-size: 14px;
+}
+
+#main-hero {
+	border: 1px solid #aaa;
+	background-color: #ddd;
+}
+
+#main-hero img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px double;
+	border-radius: 15px;
+
+	-webkit-box-shadow: 10px 10px 5px #888888;
+	box-shadow: 10px 10px 5px #888888;
+	margin-bottom: 40px;
+	overflow: hidden;
+}
+
+.band-partial {
+	border: 1px solid black;
+	border-radius: 10px;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 550px;
+	position: relative;
+	background-color: #ddd;
+}
+
+.band-partial img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.band-partial p {
+	font-size: 14px;
+	line-height: 18px;
+	margin-left: 5px;
+}
+
+.band-photo-container img {
+	border: 1px solid black;
+	border-radius: 10px;
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-top: 5px;
+}
+
+.band-photo-container h6 {
+	margin-top: 0px;
+	margin-left: 5px;
+}
+
+.band-footer hr {
+	border-bottom-color: black;
+}
+
+.band-footer .progress {
+	border: 1px solid black;
+	margin-left: 5%;
+	margin-right: 5%;
+	border-radius: 15px;
+}
+
+.bar {
+	text-indent: 18%;
+}
+
+.progress b {
+	color: black;
+	position: absolute;
+	text-align: center;
+}
+
+.progress {
+	background: #ddd;
+}
+
+.band-footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+}
+
+.band-footer span {
+	font-size: 10px;
+	line-height: 10px;
+}
+
+.band-footer br {
+	margin: 2px 0;
+	line-height: 4px;
+}
+
+#footer {
+	background-color: #ddd;
+	height: 200px;
+}
+
+#footer .social-outer {
+	display: table;
+	height: 50px;
+	width: 50px;
+	overflow: hidden;
+	border: 1px solid black;
+	text-align: center;
+	background-color: #aaa;
+	border-radius: 15px;
+}
+
+.social-inner p {
+	font-size: 10px;
+}
+
+.social-inner {
+	display: table-cell;
+	vertical-align: middle;
+	top: 50%;
+}
+
+#foot-links {
+	margin-top: 20px;
+	font-size: 12px;
+}
