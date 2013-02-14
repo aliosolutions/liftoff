@@ -4,3 +4,34 @@ body {
 .brand {
 	margin-left: 0;
 }
+.show {
+	height: 90px;
+	margin-bottom: 10px;
+}
+.progress {
+	margin-bottom: 8px;
+}
+.stats {
+	list-style: none;
+}
+.num{
+	color: black;
+	display: block;
+	font-size: 22px;
+	font-weight: bold;
+}
+.percent-funded {
+	display: inline-block;
+	border-right: 1px solid white;
+	padding-right: 10px;
+}
+.tix-sold {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.time-left {
+	display: inline-block;
+	padding-left: 10px;
+	border-left: 1px solid white;
+}

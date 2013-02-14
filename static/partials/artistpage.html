@@ -1,4 +1,32 @@
 <div class="container">
-	<h1>{{artist}}</h1>
-	<img src="http://placehold.it/640x480">
+	<div class="row">
+		<h1>{{artist.name}}</h1>
+		<div class="span8">
+			<img src="{{artist.pic}}">
+			<hr>
+			<p id="description">{{artist.description}}</p>
+		</div>
+		<div class="span4">
+			<div ng-repeat="show in shows" class=" show alert alert-info">
+				<b>{{show.city}}</b>
+				<div class="progress">
+					<div class="bar" style="width: {{show.percent}}%;"></div>
+				</div>
+				<ul class="stats">
+					<li class="percent-funded">
+						<span class="num">{{show.percent}}%</span>	
+						<span>funded</span>
+					</li>
+					<li class="tix-sold">
+						<span class="num">{{show.tix.sold}}</span>	
+						<span>tix sold</span>
+					</li>
+					<li class="time-left">
+						<span class="num">{{show.daysLeft}} days</span>	
+						<span>until liftoff</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
