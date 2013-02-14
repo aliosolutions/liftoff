@@ -1,9 +1,8 @@
-angular.module('app', [])
-	.config(function($routeProvider){
-		$routeProvider.
-		when('/', {controller: AppCtrl, templateUrl: 'index.html'})
-	});
+var app = angular.module('liftoff', []);
 
-function AppCtrl($scope){
-	$scope.foo = 'bar';
-}
+
+app.config(function($routeProvider){
+	$routeProvider.when('/', {templateUrl: 'artistpage.html'});
+});
+
+
