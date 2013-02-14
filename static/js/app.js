@@ -1,8 +1,10 @@
 var app = angular.module('liftoff', []);
 
 
-app.config(function($routeProvider){
-	$routeProvider.when('/', {templateUrl: 'artistpage.html'});
-});
+app.config(['$routeProvider', function($routeProvider){
+	$routeProvider.when('/artist', {templateUrl: 'partials/artistpage.html'});
+
+	$routeProvider.otherwise({redirectTo: '/404'});
+}]);
 
 
