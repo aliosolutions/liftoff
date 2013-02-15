@@ -1,25 +1,26 @@
 <div class="container">
 	<div class="row">
 		<h1>{{artist.name}}</h1>
-		<div class="span8">
+		<div class="span6">
 			<img src="{{artist.pic}}">
 			<hr>
 			<p id="description">{{artist.description}}</p>
 		</div>
-		<div class="span4">
+		<div class="span6">
 			<div ng-repeat="show in shows" class=" show alert alert-info">
-				<b>{{show.city}}</b>
+				<p>{{show.city}}</p>
 				<div class="progress">
 					<div class="bar" style="width: {{show.percent}}%;"></div>
 				</div>
+				<a href="" class="btn btn-large btn-success btn-buy">Back this show</a>
 				<ul class="stats">
 					<li class="percent-funded">
 						<span class="num">{{show.percent}}%</span>	
 						<span>funded</span>
 					</li>
 					<li class="tix-sold">
-						<span class="num">{{show.tix.sold}}</span>	
-						<span>tix sold</span>
+						<span class="num">{{show.tix.sold}} / {{show.tix.goal}}</span>	
+						<span>tickets sold</span>
 					</li>
 					<li class="time-left">
 						<span class="num">{{show.daysLeft}} days</span>	
