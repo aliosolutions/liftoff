@@ -1,3 +1,4 @@
+
 <div class="container">
 	<div class="row">
 		<h1>{{artist.name}}</h1>
@@ -12,7 +13,7 @@
 				<div class="progress">
 					<div class="bar" style="width: {{show.percent}}%;"></div>
 				</div>
-				<a href="" class="btn btn-large btn-success btn-buy">Back this show</a>
+				<a href="" class="btn btn-large btn-success btn-buy" ng-click="openInfo(show, artist)">Back this show</a>
 				<ul class="stats">
 					<li class="percent-funded">
 						<span class="num">{{show.percent}}%</span>	
@@ -30,4 +31,42 @@
 			</div>
 		</div>
 	</div>
+</div>
+ 
+<!-- Modal -->
+<div id="infoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ 	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    	<h3 id="myModalLabel">Order information</h3>
+  	</div>
+  	<div class="modal-body">
+    	<form class="form-horizontal" ng-submit="submitForm()">
+			<div class="control-group">
+			    <label class="control-label" for="inputEmail">Email address</label>
+			    <div class="controls">
+			      	<input type="text" id="inputEmail" ng-model="order.email" placeholder="bobloblaw@gmail.com">
+			    </div>
+		  	</div>
+		  	<div class="control-group">
+			    <label class="control-label" for="inputName">Your real name</label>
+			    <div class="controls">
+			      	<input type="text" id="inputName" ng-model="order.name" placeholder="Bob Loblaw">
+			    </div>
+		  	</div>
+		  	<div class="control-group">
+			    <label class="control-label" for="inputQuantity">Number of tickets</label>
+			    <div class="controls">
+			      	<input type="number" ng-model="order.quantity" id="inputQuantity">
+			    </div>
+		  	</div>
+		  	<div class="control-group">
+		 		<div class="controls">
+		      		<button class="btn btn-success" ng-click="openPayment()">Checkout now</button>
+		    	</div>
+		 	</div>
+		</form>
+  	</div>
+  	<div class="modal-footer">
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  	</div>
 </div>
