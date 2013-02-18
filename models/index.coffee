@@ -1,2 +1,2 @@
 module.exports = 
-	user: require './user'
+	Artist: require './artist'

@@ -5,7 +5,7 @@ mongoose = require 'mongoose'
 mongoose.connect config.mongoUri
 
 app = express()
-
+app.use express.bodyParser()
 app.use express.static './static'
 
 require('./routes.coffee') app
