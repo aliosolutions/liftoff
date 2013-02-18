@@ -50,10 +50,10 @@ function ArtistCtrl($scope){
 		console.log("Show price: " + $scope.selectedShow.price + ", artist name: " + $scope.selectedArtist.name);
 		var token = function(res){
 			//pack everything up neatly into $scope.order
-			$scope.order.show = $scope.selectedShow;
-			$scope.order.show.artist = $scope.selectedArtist;
+			$scope.order.city = $scope.selectedShow.city;
+			$scope.order.artist = $scope.selectedArtist.name;
 			$scope.order.token = res;
-			$scope.order.amount = $scope.order.show.price * $scope.order.quantity;
+			$scope.order.amount = $scope.selectedShow.price * $scope.order.quantity;
 			$scope.placeOrder();
 		}
 		var show = $scope.selectedShow;

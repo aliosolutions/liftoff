@@ -1,19 +1,23 @@
 mongoose = require 'mongoose'
 
-Guest = 
+Guest = mongoose.Schema
 	name: String
 	email: String
 	numTickets: Number
+	serializedToken: String
 
-Show = 
+Show = mongoose.Schema
 	city: String
 	price: Number # in cents
 	guests: [Guest]
 	ticketsSold: Number
 	ticketsGoal: Number
-	liftoffDate: Date
+	liftoffDate: String
 schema = mongoose.Schema
-	name: String
+	name: 
+		type: String
+		index: 
+			unique: true
 	description: String
 	image: String
 	shows: [Show]

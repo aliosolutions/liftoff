@@ -1,5 +1,6 @@
 Artist = require('../models').Artist
 authToken = require('../secret.coffee').authToken
+_ = require 'underscore'
 module.exports = 
 	read: (req, res)=>
 		id = req.param('id')
@@ -30,5 +31,34 @@ module.exports =
 	update: (req, res)=>
 		# this function has two purposes: if an authToken is supplied, it is used to add shows.
 		# if no auth token is supplied, it is used to place orders by customers.
-		if not req.body.authToken?
-			console.log "Customer is placing order"
+		id = req.param('id')
+
+		Artist.findById id, (err, artist) =>
+			if err? or not artist? then res.send err
+			else if artist?
+				if not req.body.authToken?
+					console.log "Customer is placing order"
+				
+					####
+					guest = 
+						name: req.body.name
+						email: req.body.email
+						serializedToken: JSON.stringify(req.body.token)
+						numTickets: req.body.quantity
+					show = _.find artist.shows, (s)=> if s.city is req.body.city then return true else return false
+					if show?
+						console.log show.guests
+						show.guests.push guest
+
+					####
+				else if req.body.authToken is authToken
+					show = 			
+						price: req.body.price
+						city: req.body.city
+						ticketsGoal: req.body.ticketsGoal
+						liftoffDate: req.body.liftoffDate
+						ticketsSold: 0
+					artist.shows.push show
+				artist.save (err) =>
+					if err? then res.send err else res.send artist
+
