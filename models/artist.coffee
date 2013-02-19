@@ -12,7 +12,7 @@ Show = mongoose.Schema
 	guests: [Guest]
 	ticketsSold: Number
 	ticketsGoal: Number
-	liftoffDate: String
+	liftoffDate: Date
 schema = mongoose.Schema
 	name: 
 		type: String

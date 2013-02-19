@@ -1,12 +1,14 @@
 
 
 function ArtistCtrl($scope, $http, $routeParams){
+	var DAY = 86400000;
 	$http.get('/artist/' + $routeParams.id).success(function(data){
 		$scope.artist = data;
 		//calculate each show's days till liftoff and percentage funded.
 		for(var i in $scope.artist.shows){
 			var show = $scope.artist.shows[i];
 			show.percent = Math.floor(show.ticketsSold / show.ticketsGoal) * 100;
+			show.daysLeft = Math.ceil((new Date(show.liftoffDate) - Date.now()) / DAY);
 		}
 	});
 

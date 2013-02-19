@@ -1,6 +1,7 @@
 Artist = require('../models').Artist
 authToken = require('../secret.coffee').authToken
 _ = require 'underscore'
+DAY = 86400000
 module.exports = 
 	read: (req, res)=>
 		id = req.param('id')
@@ -56,7 +57,7 @@ module.exports =
 						price: req.body.price
 						city: req.body.city
 						ticketsGoal: req.body.ticketsGoal
-						liftoffDate: req.body.liftoffDate
+						liftoffDate: Date.now() + req.body.duration * DAY
 						ticketsSold: 0
 					artist.shows.push show
 				artist.save (err) =>
