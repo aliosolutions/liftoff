@@ -1,40 +1,15 @@
 
 
-function ArtistCtrl($scope){
-	$scope.artist = {
-		name: 'Justin and The Goughs',
-		description: "Triple threat musician, comedian, entrepreneur Justin Gough. See his unforgettable one-man show.",
-		pic: "http://placehold.it/640x480"
-	};
+function ArtistCtrl($scope, $http, $routeParams){
+	$http.get('/artist/' + $routeParams.id).success(function(data){
+		$scope.artist = data;
+		//calculate each show's days till liftoff and percentage funded.
+		for(var i in $scope.artist.shows){
+			var show = $scope.artist.shows[i];
+			show.percent = Math.floor(show.ticketsSold / show.ticketsGoal) * 100;
+		}
+	});
 
-	var testShow = {
-		city: "Seattle",
-		tix: {
-			sold: 30,
-			goal: 50
-		},
-		percent: Math.floor(100 * 30 / 50),
-		daysLeft: 4
-	};
-	var otherShow = {
-		tix: {
-			sold: 20,
-			goal: 60
-		},
-		percent: Math.floor(100 * 20 / 60),
-		city: "San Francisco",
-		daysLeft: 4
-	};
-	var oneMoreShow = {
-		tix: {
-			sold: 45,
-			goal: 300
-		},
-		percent: Math.floor(100 * 45 / 300),
-		city: "Portland",
-		daysLeft: 4,
-		price: 8000
-	};
 	$scope.selectedShow = {};
 	$scope.selectedArtist = {}
 	$scope.order = {
@@ -72,6 +47,4 @@ function ArtistCtrl($scope){
 		console.log("Placing order");
 		console.log($scope.order)
 	}
-
-	$scope.shows = [testShow, otherShow, oneMoreShow]
 }

@@ -3,12 +3,12 @@
 	<div class="row">
 		<h1>{{artist.name}}</h1>
 		<div class="span6">
-			<img src="{{artist.pic}}">
+			<img src="{{artist.image}}">
 			<hr>
 			<p id="description">{{artist.description}}</p>
 		</div>
 		<div class="span6">
-			<div ng-repeat="show in shows" class=" show alert alert-info">
+			<div ng-repeat="show in artist.shows" class=" show alert alert-info">
 				<p>{{show.city}}</p>
 				<div class="progress">
 					<div class="bar" style="width: {{show.percent}}%;"></div>
@@ -20,7 +20,7 @@
 						<span>funded</span>
 					</li>
 					<li class="tix-sold">
-						<span class="num">{{show.tix.sold}} / {{show.tix.goal}}</span>	
+						<span class="num">{{show.ticketsSold}} / {{show.ticketsGoal}}</span>	
 						<span>tickets sold</span>
 					</li>
 					<li class="time-left">
