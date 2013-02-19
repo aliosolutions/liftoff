@@ -1,14 +1,22 @@
 Artist = require('../models').Artist
-authToken = require('../secret.coffee').authToken
+secret = require('../secret.coffee')
+authToken = secret.authToken
+stripeKey = secret.stripe
 _ = require 'underscore'
+stripe = require('stripe') stripeKey
 DAY = 86400000
-module.exports = 
+
+artistCtrl = module.exports = 
 	read: (req, res)=>
 		id = req.param('id')
 		console.log "Reading id: #{id}"
 		Artist.findById id, (err, artist) =>
 			if err? then res.send err
-			else res.send artist
+			else
+				#### TESTING
+				artistCtrl.billShow(artist.shows[0]) 
+				####
+				res.send artist
 
 	create: (req, res)=>
 		if req.body.authToken isnt authToken
@@ -49,6 +57,7 @@ module.exports =
 					show = _.find artist.shows, (s)=> if s.city is req.body.city then return true else return false
 					if show?
 						console.log show.guests
+						show.ticketsSold += guest.numTickets
 						show.guests.push guest
 
 					####
@@ -63,3 +72,14 @@ module.exports =
 				artist.save (err) =>
 					if err? then res.send err else res.send artist
 
+	billShow: (show) =>
+		for guest in show.guests
+			stripe.charges.create
+				amount: guest.numTickets * show.price
+				currency: 'usd'
+				card: JSON.parse(guest.serializedToken).id
+			, (err, customer)=>
+				if err? then console.log "Error: #{err}"
+				else 
+					console.log customer
+		

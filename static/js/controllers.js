@@ -37,11 +37,11 @@ function ArtistCtrl($scope, $http, $routeParams){
 		var artist = $scope.selectedArtist;
 		var order = $scope.order;
 		StripeCheckout.open({
-			key:         'pk_test_czwzkTp2tactuLOEOqbMTRzG',
+			key:         'pk_test_rNLU0zbXW71NwhRENYPYXmUi',
 	        amount:      show.price * order.quantity,
 	        name:        artist.name,
 	        description: "" + order.quantity + " ticket(s)($" + show.price / 100 + " each) to show in " + show.city,
-	        panelLabel:  'Buy ticket(s)',
+	        panelLabel:  'Buy ' + order.quantity + ' ticket(s)',
 	        token:       token
 		});
 	}
