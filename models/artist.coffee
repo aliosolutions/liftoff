@@ -9,6 +9,9 @@ Guest = mongoose.Schema
 Show = mongoose.Schema
 	city: String
 	price: Number # in cents
+	billed: 
+		type: Boolean
+		default: false
 	guests: [Guest]
 	ticketsSold: Number
 	ticketsGoal: Number

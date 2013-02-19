@@ -14,7 +14,7 @@ artistCtrl = module.exports =
 			if err? then res.send err
 			else
 				#### TESTING
-				artistCtrl.billShow(artist.shows[0]) 
+				artistCtrl.billAllBillableShows()
 				####
 				res.send artist
 
@@ -79,7 +79,19 @@ artistCtrl = module.exports =
 				currency: 'usd'
 				card: JSON.parse(guest.serializedToken).id
 			, (err, customer)=>
-				if err? then console.log "Error: #{err}"
-				else 
-					console.log customer
-		
+				if not err? then console.log "Billed a customer!"
+
+	billAllBillableShows: ()=>
+		console.log "Attempting to bill shows.."
+		Artist.find {}, null, null, (err, docs)=>
+			for artist in docs
+				for show in artist.shows
+					if not show.billed
+						if show.ticketsSold >= show.ticketsGoal
+							console.log "Found a show that's sold enough tickets"
+							if new Date(show.liftoffDate) < Date.now() and new Date(show.liftoffDate) + DAY > Date.now()
+								## then bill show and set it to billed, then save artist
+								artistCtrl.billShow show
+								console.log "Billed a show!!"
+								show.billed = true
+								artist.save()
