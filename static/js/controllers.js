@@ -7,7 +7,7 @@ function ArtistCtrl($scope, $http, $routeParams){
 		//calculate each show's days till liftoff and percentage funded.
 		for(var i in $scope.artist.shows){
 			var show = $scope.artist.shows[i];
-			show.percent = Math.floor(show.ticketsSold / show.ticketsGoal) * 100;
+			show.percent = Math.floor(show.ticketsSold / show.ticketsGoal * 100);
 			show.daysLeft = Math.ceil((new Date(show.liftoffDate) - Date.now()) / DAY);
 			if(show.daysLeft < 0) show.daysLeft = 0;
 		}
