@@ -47,6 +47,9 @@ function ArtistCtrl($scope, $http, $routeParams){
 	}
 	$scope.placeOrder = function(){
 		console.log("Placing order");
-		console.log($scope.order)
+		console.log($scope.order);
+		$http.put('/artist/' + $routeParams.id, $scope.order).success(function(){
+			alert("Your order has been placed. Thank you!"); //redirection to real receipt page goes here.
+		});
 	}
 }
