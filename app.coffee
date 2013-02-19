@@ -8,7 +8,7 @@ app = express()
 app.use express.bodyParser()
 app.use express.static './static'
 
-require('./routes.coffee') app
+require('./app/routes.coffee') app
 
 app.listen config.port
 console.log 'Server listening on port ' + config.port

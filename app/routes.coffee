@@ -1,5 +1,5 @@
 
-controllers = require './controllers'
+controllers = require '../controllers'
 module.exports = (app) ->
 
 	app.get '/artist/:id', controllers.artist.read
