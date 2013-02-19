@@ -54,3 +54,22 @@ function ArtistCtrl($scope, $http, $routeParams){
 		});
 	}
 }
+
+function ContactCtrl($scope, $http, $location){
+	$scope.header = "Interested in starting your own Liftoff?"
+	$scope.buttonEnabled = true;
+	$scope.showThankYou = false;
+	$scope.sendContactRequest = function(){
+		$scope.buttonEnabled = false;
+		var data = {
+			email: $scope.email,
+			name: $scope.name
+		}
+		$http.post('/contact', data).success(function(){
+			$scope.header = "Thank you!"
+			$scope.showThankYou = true;
+		});
+		
+		
+	}
+}

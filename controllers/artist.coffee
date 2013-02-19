@@ -13,9 +13,6 @@ artistCtrl = module.exports =
 		Artist.findById id, (err, artist) =>
 			if err? then res.send err
 			else
-				#### TESTING
-				artistCtrl.billAllBillableShows()
-				####
 				res.send artist
 
 	create: (req, res)=>
