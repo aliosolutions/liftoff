@@ -1,6 +1,6 @@
 
 
-function ArtistCtrl($scope, $http, $routeParams){
+function ArtistCtrl($scope, $http, $routeParams, $location){
 	var DAY = 86400000;
 	$http.get('/artist/' + $routeParams.id).success(function(data){
 		$scope.artist = data;
@@ -50,7 +50,7 @@ function ArtistCtrl($scope, $http, $routeParams){
 		console.log("Placing order");
 		console.log($scope.order);
 		$http.put('/artist/' + $routeParams.id, $scope.order).success(function(){
-			alert("Your order has been placed. Thank you!"); //redirection to real receipt page goes here.
+			$location.path("/confirm")
 		});
 	}
 }
@@ -98,7 +98,7 @@ function AdminCtrl($scope, $http){
 		$scope.showButton.enabled = false;
 		var data = {
 			city: $scope.show.city,
-			price: $scope.show.price,
+			price: $scope.show.price * 100,
 			authToken: $scope.authToken,
 			ticketsGoal: $scope.show.ticketsGoal,
 			duration: $scope.show.duration
@@ -106,8 +106,11 @@ function AdminCtrl($scope, $http){
 		$http.put('/artist/' + $scope.artistCode, data).success(function(response){
 			$scope.showButton.text = "Show added! Add another show";
 			$scope.showButton.enabled = true;
-
 		});
 	}
 	
+}
+
+function ConfirmCtrl($scope){
+
 }
