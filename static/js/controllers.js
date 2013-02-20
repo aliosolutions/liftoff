@@ -73,3 +73,41 @@ function ContactCtrl($scope, $http, $location){
 		
 	}
 }
+
+function AdminCtrl($scope, $http){
+	$scope.artistButtonEnabled = true;
+	$scope.createArtist = function(){
+		$scope.artistButtonEnabled = false;
+		var data = {
+			name: $scope.name,
+			description: $scope.description,
+			image: $scope.image,
+			authToken: $scope.authToken
+		};
+		$http.post('/artist', data).success(function(response){
+			console.log("Got response from server.");
+			console.log(response);
+			$scope.artistCode = response._id;
+		});
+	}
+	$scope.showButton = {
+		enabled: true,
+		text: "Add show"
+	}
+	$scope.addShow = function(){
+		$scope.showButton.enabled = false;
+		var data = {
+			city: $scope.show.city,
+			price: $scope.show.price,
+			authToken: $scope.authToken,
+			ticketsGoal: $scope.show.ticketsGoal,
+			duration: $scope.show.duration
+		}
+		$http.put('/artist/' + $scope.artistCode, data).success(function(response){
+			$scope.showButton.text = "Show added! Add another show";
+			$scope.showButton.enabled = true;
+
+		});
+	}
+	
+}

@@ -1,0 +1,26 @@
+<div class="container">
+	<h1>Add an artist</h1>
+	<em>For Justin's eyes only</em>
+	<hr>
+	<form ng-submit="createArtist()">
+		Super secret admin code: <input type="text" ng-model="authToken"><br>
+		Artist name: <input type="text" ng-model="name"><br>
+		Artist description: <textarea ng-model="description"></textarea><br>
+		Artist image URL: <input type="text" ng-model="image"><br>
+		<input type="submit" class="btn btn-success" value="Create artist" ng-disabled="!artistButtonEnabled">
+	</form>
+	<hr>
+	<form ng-submit="addShow()">
+		<h1>Add a show to an artist</h1>
+		Artist code: <input type="text" ng-model="artistCode"><br>
+		Super secret admin code: <input type="text" ng-model="authToken"><br>
+		Price (IN DOLLARS): <input type="text" ng-model="show.price"><br>
+		City: <input type="text" ng-model="show.city"><br>
+		Ticket goal (# tickets): <input type="text" ng-model="show.ticketsGoal"><br>
+		Liftoff duration (days): <input type="text" ng-model="show.duration"><br>
+		<input type="submit" class="btn btn-success" value="{{showButton.text}}" ng-disabled="!showButton.enabled">
+		<hr>
+		<a href="#/artist/{{artistCode}}" class="btn btn-info">Go to artist page</a>
+	</form>
+
+</div>

@@ -31,7 +31,7 @@ artistCtrl = module.exports =
 					res.send "#{err}" 
 				else 
 					console.log "Successfully created artist"
-					res.send "Success"
+					res.send artist
 			)
 
 	update: (req, res)=>
