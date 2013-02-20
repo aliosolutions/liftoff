@@ -45,3 +45,8 @@ body {
 #footer {
 	margin-top: 400px;
 }
+img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

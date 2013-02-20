@@ -66,7 +66,7 @@ function ContactCtrl($scope, $http, $location){
 			name: $scope.name
 		}
 		$http.post('/contact', data).success(function(){
-			$scope.header = "Thank you!"
+			$scope.header = "Your Liftoff"
 			$scope.showThankYou = true;
 		});
 		
@@ -112,5 +112,8 @@ function AdminCtrl($scope, $http){
 }
 
 function ConfirmCtrl($scope){
+
+}
+function NotFoundCtrl($scope){
 
 }
