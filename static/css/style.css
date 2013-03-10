@@ -1,50 +1,63 @@
 body {
 	padding-top: 60px;
 }
+
 .brand {
 	margin-left: 0;
 }
+
 .show {
 	height: 90px;
 	margin-bottom: 10px;
 }
+
 .progress {
 	margin-bottom: 2px;
 	width: 50%;
 	display: inline-block;
 }
+
 .stats {
 	list-style: none;
 	margin-left: 0;
+	white-space: nowrap;
 }
-.num{
+
+.num {
 	color: black;
 	display: block;
 	font-size: 22px;
 	font-weight: bold;
 }
+
 .percent-funded {
 	display: inline-block;
 	border-right: 1px solid white;
 	padding-right: 10px;
 }
+
 .tix-sold {
 	display: inline-block;
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
 .time-left {
 	display: inline-block;
 	padding-left: 10px;
 	border-left: 1px solid white;
 }
+
 .btn-buy {
 	display: inline;
-	margin-left: 40px;
+	float: right;	
+	white-space: nowrap;
 }
+
 #footer {
 	margin-top: 400px;
 }
+
 img.center {
 	display: block;
 	margin-left: auto;

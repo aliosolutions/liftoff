@@ -38,7 +38,7 @@ function ArtistCtrl($scope, $http, $routeParams, $location){
 		var artist = $scope.selectedArtist;
 		var order = $scope.order;
 		StripeCheckout.open({
-			key:         'pk_test_rNLU0zbXW71NwhRENYPYXmUi',
+			key:         'pk_live_Wo2CKtkZLo5G7FyB2yDvDu1p',
 	        amount:      show.price * order.quantity,
 	        name:        artist.name,
 	        description: "" + order.quantity + " ticket(s)($" + show.price / 100 + " each) to show in " + show.city,
