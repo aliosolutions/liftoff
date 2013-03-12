@@ -7,6 +7,16 @@ stripe = require('stripe') stripeKey
 DAY = 86400000
 
 artistCtrl = module.exports = 
+	readByName: (req, res)=>
+		# expect artist name with underscores in place of spaces. Case-sensitive.
+		name = req.param('name')
+		name = name.replace('_', ' ')
+		console.log "Reading artist: #{name}"
+		Artist.findOne {name: name}, (err, doc) ->
+			if err? then res.send err
+			else
+				res.send doc
+
 	read: (req, res)=>
 		id = req.param('id')
 		console.log "Reading id: #{id}"

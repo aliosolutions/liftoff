@@ -2,7 +2,10 @@
 
 function ArtistCtrl($scope, $http, $routeParams, $location){
 	var DAY = 86400000;
-	$http.get('/artist/' + $routeParams.id).success(function(data){
+	var url;
+	if($routeParams.id) url = '/artist/' + $routeParams.id;
+	if($routeParams.name) url = '/a/' +  $routeParams.name;
+	$http.get(url).success(function(data){
 		$scope.artist = data;
 		//calculate each show's days till liftoff and percentage funded.
 		for(var i in $scope.artist.shows){
@@ -49,7 +52,7 @@ function ArtistCtrl($scope, $http, $routeParams, $location){
 	$scope.placeOrder = function(){
 		console.log("Placing order");
 		console.log($scope.order);
-		$http.put('/artist/' + $routeParams.id, $scope.order).success(function(){
+		$http.put('/artist/' + $scope.artist.id, $scope.order).success(function(){
 			$location.path("/confirm")
 		});
 	}
@@ -118,5 +121,5 @@ function NotFoundCtrl($scope){
 
 }
 function LandingCtrl($scope){
-	
+
 }
