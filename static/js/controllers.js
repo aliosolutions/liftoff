@@ -117,3 +117,6 @@ function ConfirmCtrl($scope){
 function NotFoundCtrl($scope){
 
 }
+function LandingCtrl($scope){
+	
+}
