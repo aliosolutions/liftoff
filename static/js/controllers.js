@@ -123,3 +123,6 @@ function NotFoundCtrl($scope){
 function LandingCtrl($scope){
 
 }
+function DiscoveryCtrl($scope){
+
+}
