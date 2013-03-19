@@ -102,3 +102,12 @@ artistCtrl = module.exports =
 								console.log "Billed a show!!"
 								show.billed = true
 								artist.save()
+
+	mostRecent: (req, res) =>
+		console.log "current date: " + Date.now()
+		Artist.find()
+		.sort({$natural: -1})
+		.limit(req.param('num'))
+		.exec((err, doc)->
+			res.send(doc or err)
+		)
