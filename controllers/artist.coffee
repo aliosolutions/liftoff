@@ -12,7 +12,7 @@ artistCtrl = module.exports =
 		name = req.param('name')
 		name = name.replace('_', ' ')
 		console.log "Reading artist: #{name}"
-		Artist.findOne {name: name}, (err, doc) ->
+		Artist.findOne {name: name}, '-guests', (err, doc) ->
 			if err? then res.send err
 			else
 				res.send doc
