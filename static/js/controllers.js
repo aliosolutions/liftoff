@@ -120,8 +120,12 @@ function ConfirmCtrl($scope){
 function NotFoundCtrl($scope){
 
 }
-function LandingCtrl($scope){
-
+function LandingCtrl($scope, $http){
+	$scope.numToDisplay = 3;
+	$http.get('/mostrecent/' + $scope.numToDisplay).success(function(data){
+		$scope.artists = data;
+		console.log($scope.artists);
+	});
 }
 function DiscoveryCtrl($scope, $http){
 	$scope.truncationLength = 100;
