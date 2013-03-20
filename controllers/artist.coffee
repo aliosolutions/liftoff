@@ -108,6 +108,6 @@ artistCtrl = module.exports =
 		Artist.find()
 		.sort({$natural: -1})
 		.limit(req.param('num'))
-		.exec((err, doc)->
+		.exec (err, doc)->
 			res.send(doc or err)
-		)
+		

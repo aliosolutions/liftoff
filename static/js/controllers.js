@@ -124,9 +124,20 @@ function LandingCtrl($scope){
 
 }
 function DiscoveryCtrl($scope){
-	$scope.artist = {
+	$scope.artists = [{
 		name: 'Vocal Few',
 		description: "Once in a while things just happen because they make sense. Vocal Few is Matt MacDonald (singer/songwriter of The Classic Crime) and his beautiful wife Kristie (singer/pianist/lover of Matt MacDonald). For years...",
 		image: 'http://f0.bcbits.com/z/12/44/1244035185-1.jpg'
-	}
+	},
+	{
+		name: 'Vocal Few',
+		description: "Once in a while things just happen because they make sense. Vocal Few is Matt MacDonald (singer/songwriter of The Classic Crime) and his beautiful wife Kristie (singer/pianist/lover of Matt MacDonald). For years...",
+		image: 'http://f0.bcbits.com/z/12/44/1244035185-1.jpg'
+	},
+	{
+		name: 'Vocal Few',
+		description: "Once in a while things just happen because they make sense. Vocal Few is Matt MacDonald (singer/songwriter of The Classic Crime) and his beautiful wife Kristie (singer/pianist/lover of Matt MacDonald). For years...",
+		image: 'http://f0.bcbits.com/z/12/44/1244035185-1.jpg'
+	},
+	];
 }

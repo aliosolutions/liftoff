@@ -1,9 +1,11 @@
-<p>This is the reusable discovery view fragment</p>
-<hr>
-<div class="row">
-	<div class="span7">
-		<h1 class="artist">{{artist.name}}</h1>
-		<p class="artist">{{artist.description}}</p>
+<div ng-repeat="artist in artists">
+	<hr>
+	<div class="row" ng-class-odd="'odd-row'">
+		<div class="span7">
+			<h1 class="artist">{{artist.name}}</h1>
+			<p class="artist">{{artist.description}}</p>
+			<a href="#/a/Vocal_Few" class="btn btn-large btn-primary btn-view-events">View Events »</a>
+		</div>
+		<div class="span5"><img src="{{artist.image}}"></div>
 	</div>
-	<div class="span5"><img src="{{artist.image}}"></div>
 </div>
