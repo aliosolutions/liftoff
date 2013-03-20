@@ -10,7 +10,7 @@ artistCtrl = module.exports =
 	readByName: (req, res)=>
 		# expect artist name with underscores in place of spaces. Case-sensitive.
 		name = req.param('name')
-		name = name.replace('_', ' ')
+		name = name.replace(/_/g, ' ')
 		console.log "Reading artist: #{name}"
 		Artist.findOne {name: name}, '-guests', (err, doc) ->
 			if err? then res.send err
