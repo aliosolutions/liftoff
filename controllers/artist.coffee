@@ -89,13 +89,11 @@ artistCtrl = module.exports =
 				if not err? then console.log "Billed a customer!"
 
 	billAllBillableShows: ()=>
-		console.log "Attempting to bill shows.."
 		Artist.find {}, null, null, (err, docs)=>
 			for artist in docs
 				for show in artist.shows
 					if not show.billed
 						if show.ticketsSold >= show.ticketsGoal
-							console.log "Found a show that's sold enough tickets"
 							if new Date(show.liftoffDate) < Date.now() and new Date(show.liftoffDate) + DAY > Date.now()
 								## then bill show and set it to billed, then save artist
 								artistCtrl.billShow show
@@ -104,7 +102,6 @@ artistCtrl = module.exports =
 								artist.save()
 
 	mostRecent: (req, res) =>
-		console.log "current date: " + Date.now()
 		Artist.find()
 		.sort({$natural: -1})
 		.limit(req.param('num'))
