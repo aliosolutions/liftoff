@@ -124,7 +124,7 @@ function LandingCtrl($scope){
 
 }
 function DiscoveryCtrl($scope, $http){
-	
+	$scope.truncationLength = 100;
 	$scope.numToDisplay = 4;
 	$scope.artists = [{
 		name: 'Vocal Few',
@@ -145,6 +145,6 @@ function DiscoveryCtrl($scope, $http){
 
 	$http.get('/mostrecent/' + $scope.numToDisplay).success(function(data){
 		$scope.artists = data;
-		console.log($scope.artists)
+		console.log($scope.artists);
 	});
 }
