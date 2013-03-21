@@ -1,5 +1,6 @@
 Artist = require('../models').Artist
 secret = require('../secret.coffee')
+mailer = require '../app/mail.coffee'
 authToken = secret.authToken
 stripeKey = secret.stripe
 _ = require 'underscore'
@@ -47,9 +48,8 @@ artistCtrl = module.exports =
 	update: (req, res)=>
 		# this function has two purposes: if an authToken is supplied, it is used to add shows.
 		# if no auth token is supplied, it is used to place orders by customers.
-		id = req.param('id')
-
-		Artist.findById id, (err, artist) =>
+		console.log req.param('artist')
+		Artist.findOne {name: req.param('artist')}, (err, artist) =>
 			if err? or not artist? then res.send err
 			else if artist?
 				if not req.body.authToken?
@@ -66,6 +66,7 @@ artistCtrl = module.exports =
 						console.log show.guests
 						show.ticketsSold += guest.numTickets
 						show.guests.push guest
+						mailer.sendPurchaseNotification(guest, artist, show)
 
 					####
 				else if req.body.authToken is authToken
