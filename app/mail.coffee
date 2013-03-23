@@ -1,12 +1,11 @@
 
 nodemailer = require 'nodemailer'
-secret = require '../secret.coffee'
 
 smtpTransport = nodemailer.createTransport "SMTP",
 	service: "Gmail"
 	auth: 
-		user: secret.email.address
-		pass: secret.email.password
+		user: process.env.emailAddress
+		pass: process.env.emailPassword
 mail = module.exports = 
 	receivers: "justingough@aliosolutions.com, kepzorz@gmail.com"
 	sendContactRequest: (args)->
