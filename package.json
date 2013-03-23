@@ -1,6 +1,10 @@
 {
   "name": "liftoff",
   "subdomain": "liftoffhq",
+  "domains": [
+    "liftoffhq.co",
+    "www.liftoffhq.co"
+  ],
   "scripts": {
     "start": "server.js"
   },
