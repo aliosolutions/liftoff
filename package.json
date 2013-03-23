@@ -4,12 +4,16 @@
   "scripts": {
     "start": "server.js"
   },
-  "version": "0.0.0-8",
+  "version": "0.0.0-15",
   "engines": {
     "node": "0.8.x"
   },
   "dependencies": {
     "express": "*",
-    "coffee-script": "1.4.x"
+    "coffee-script": "1.4.x",
+    "mongoose": "*",
+    "nodemailer": "*",
+    "underscore": "*",
+    "stripe": "*"
   }
 }

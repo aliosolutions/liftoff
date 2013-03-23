@@ -1,8 +1,7 @@
 Artist = require('../models').Artist
-secret = require('../secret.coffee')
 mailer = require '../app/mail.coffee'
-authToken = secret.authToken
-stripeKey = secret.stripe
+authToken = process.env.authToken
+stripeKey = process.env.stripe
 _ = require 'underscore'
 stripe = require('stripe') stripeKey
 DAY = 86400000
