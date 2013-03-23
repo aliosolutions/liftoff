@@ -7,6 +7,9 @@ function ArtistCtrl($scope, $http, $routeParams, $location){
 	if($routeParams.name) url = '/a/' +  $routeParams.name;
 	$http.get(url).success(function(data){
 		$scope.artist = data;
+		//track artist page visit
+		mixpanel.track('Artist page visited', {name: data.name});
+
 		//calculate each show's days till liftoff and percentage funded.
 		for(var i in $scope.artist.shows){
 			var show = $scope.artist.shows[i];
@@ -62,6 +65,7 @@ function ContactCtrl($scope, $http, $location){
 	$scope.header = "Interested in starting your own Liftoff?"
 	$scope.buttonEnabled = true;
 	$scope.showThankYou = false;
+	mixpanel.track("Contact page visited");
 	$scope.sendContactRequest = function(){
 		$scope.buttonEnabled = false;
 		var data = {
@@ -122,6 +126,7 @@ function NotFoundCtrl($scope){
 }
 function LandingCtrl($scope, $http){
 	$scope.numToDisplay = 3;
+	mixpanel.track("Landing page visited");
 	$http.get('/mostrecent/' + $scope.numToDisplay).success(function(data){
 		$scope.artists = data;
 		console.log($scope.artists);
@@ -130,22 +135,7 @@ function LandingCtrl($scope, $http){
 function DiscoveryCtrl($scope, $http){
 	$scope.truncationLength = 100;
 	$scope.numToDisplay = 4;
-	$scope.artists = [{
-		name: 'Vocal Few',
-		description: "Once in a while things just happen because they make sense. Vocal Few is Matt MacDonald (singer/songwriter of The Classic Crime) and his beautiful wife Kristie (singer/pianist/lover of Matt MacDonald). For years...",
-		image: 'http://f0.bcbits.com/z/12/44/1244035185-1.jpg'
-	},
-	{
-		name: 'Vocal Few',
-		description: "Once in a while things just happen because they make sense. Vocal Few is Matt MacDonald (singer/songwriter of The Classic Crime) and his beautiful wife Kristie (singer/pianist/lover of Matt MacDonald). For years...",
-		image: 'http://f0.bcbits.com/z/12/44/1244035185-1.jpg'
-	},
-	{
-		name: 'Vocal Few',
-		description: "Once in a while things just happen because they make sense. Vocal Few is Matt MacDonald (singer/songwriter of The Classic Crime) and his beautiful wife Kristie (singer/pianist/lover of Matt MacDonald). For years...",
-		image: 'http://f0.bcbits.com/z/12/44/1244035185-1.jpg'
-	},
-	];
+	mixpanel.track("Discovery page visited");
 
 	$http.get('/mostrecent/' + $scope.numToDisplay).success(function(data){
 		$scope.artists = data;
