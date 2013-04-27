@@ -48,8 +48,14 @@ artistCtrl = module.exports =
 		# this function has two purposes: if an authToken is supplied, it is used to add shows.
 		# if no auth token is supplied, it is used to place orders by customers.
 		console.log req.param('artist')
-		Artist.findOne {name: req.param('artist')}, (err, artist) =>
-			if err? or not artist? then res.send err
+		console.log "correct auth token: #{authToken}, given authToken: #{req.body.authToken}"
+		cb = (err, artist) =>
+			if err? 
+				res.send err
+				console.log "Error: #{err}"
+			if not artist?
+				console.log "artist not found"
+				res.send 'not found'
 			else if artist?
 				if not req.body.authToken?
 					console.log "Customer is placing order"
@@ -69,6 +75,7 @@ artistCtrl = module.exports =
 
 					####
 				else if req.body.authToken is authToken
+					console.log "authed, adding a show."
 					show = 			
 						price: req.body.price
 						city: req.body.city
@@ -78,6 +85,9 @@ artistCtrl = module.exports =
 					artist.shows.push show
 				artist.save (err) =>
 					if err? then res.send err else res.send artist
+		console.log req.param('id')
+		Artist.findOne({name: req.param('artist')}, cb) if  req.param('artist')?
+		Artist.findById(req.param('id'), cb) if req.param('id')?
 
 	billShow: (show) =>
 		for guest in show.guests

@@ -111,6 +111,8 @@ function AdminCtrl($scope, $http){
 			duration: $scope.show.duration
 		}
 		$http.put('/artist/' + $scope.artistCode, data).success(function(response){
+			console.log($scope.artistCode);
+			console.log(response)
 			$scope.showButton.text = "Show added! Add another show";
 			$scope.showButton.enabled = true;
 		});
